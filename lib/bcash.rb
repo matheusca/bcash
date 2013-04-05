@@ -1,3 +1,5 @@
+require "active_model"
+
 require "bcash/version"
 require "bcash/item"
 

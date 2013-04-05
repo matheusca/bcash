@@ -6,13 +6,18 @@ valid_attributes = {
 	amount: 2,
 	price: 200.00,
 	integration: "PAD",
-	tax: 10,
+	shipping_cost: 10,
 }
 
 describe Bcash::Item do
 
-	it "should be um valid item" do
+	it "should be a valid item" do
 		Bcash::Item.new(valid_attributes).should be_valid
+	end
+
+	it "should be return description with at 255 caracters" do
+		item = Bcash::Item.new(valid_attributes.merge(valid_attributes.merge(description: 'A' * 300)))
+		item.description.size.should == 255
 	end
 
 end
