@@ -2,7 +2,8 @@ require "active_model"
 
 require "bcash/version"
 require "bcash/item"
+require "bcash/package"
 
 module Bcash
-  # Your code goes here...
+	PAD = "PAD"
 end

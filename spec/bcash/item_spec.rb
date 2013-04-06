@@ -5,8 +5,6 @@ valid_attributes = {
 	description: "Description a item.",
 	amount: 2,
 	price: 200.00,
-	integration: "PAD",
-	shipping_cost: 10,
 }
 
 describe Bcash::Item do

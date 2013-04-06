@@ -4,7 +4,7 @@ module Bcash
 
 		attr_accessor :id, :description, :amount, :price, :integration, :shipping_cost
 
-		validates_presence_of :id, :description, :amount, :price, :integration, :shipping_cost
+		validates_presence_of :id, :description, :amount, :price
 		validate :quantity_amount
 
 		def initialize(attributes={})
@@ -12,8 +12,6 @@ module Bcash
 			@description = attributes[:description]
 			@amount = attributes[:amount]
 			@price = attributes[:price]
-			@integration = attributes[:integration]
-			@shipping_cost = attributes[:shipping_cost]
 		end
 
 
