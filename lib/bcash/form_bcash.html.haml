@@ -1,0 +1,6 @@
+%form{:action => "https://www.bcash.com.br/checkout/pay/", :name => "bcash", :method => "post"}
+  -options.each do |key, value|
+    %input{:name => key.to_s, :type => "hidden", :value => value.to_s}
+  -package.items.each do |key, value|
+    %input{:name => key.to_s, :type => "hidden", :value => value.to_s}
+  =button_html

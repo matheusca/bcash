@@ -15,19 +15,4 @@ describe Bcash::Package do
 	it "should return 8 items humanize with bcash" do
 		subject.items.should include(posts)
 	end
-
-	it "should seal package" do
-		subject.seal
-
-		subject.integration.should == "PAD"
-		subject.shipping_cost == 100.00
-	end
-
-	it "should seal package with other params" do
-		subject.seal(10.0, "Test")	
-
-		subject.integration.should == "Test"
-		subject.shipping_cost.should == 10.0
-	end
-
 end
