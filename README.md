@@ -58,6 +58,11 @@ E execute:
 
     $ bundle
 
+## TODO
+
+* Criar classe para retorno automatico
+* Verificar status do pedido
+
 ## Contributing
 
 1. Fork 
