@@ -11,6 +11,13 @@ Integração com Bcash(antigo Pagamento Digital)
 
 Você pode criar quando itens for necessários para enviar para o Bcash
 
+Você pode validar se o item criado é valido
+
+	item = Bcash::Item.new({id: 1, description: 'teste', amount: 2, price: 30.0})
+	item.valid?
+
+Valide se o item é válido, igual ao Rails.
+
 # Criando um pacote
 
 Com os itens criados, crie um pacote para o envio
