@@ -16,7 +16,7 @@ Você pode validar se o item criado é valido
 	item = Bcash::Item.new({id: 1, description: 'teste', amount: 2, price: 30.0})
 	item.valid?
 
-Valide se o item é válido, igual ao Rails.
+Valide o item, igual ao Rails.
 
 # Criando um pacote
 
