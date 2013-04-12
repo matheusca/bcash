@@ -1,29 +1,61 @@
 # Bcash
 
-TODO: Write a gem description
+Integração com Bcash(antigo Pagamento Digital)
 
-## Installation
+## Como usar
 
-Add this line to your application's Gemfile:
+# Criando um item
+
+	items = [] 
+	items << Bcash::Item.new({id: 1, description: 'teste', amount: 2, price: 30.0})
+
+Você pode criar quando itens for necessários para enviar para o Bcash
+
+# Criando um pacote
+
+Com os itens criados, crie um pacote para o envio
+
+	package = Package.create(items)
+
+No pacote você pode alterar o valor do frete e o tipo de integração do Bcash
+	
+	Package.create(items, 30.0, BCASH::PAD)
+
+# Gerando pagamento
+
+Crie um pagamento
+
+	payment = Bcash::Payment.new(package, {:email_loja => 'test@test.com'}) 
+
+Podemos colocar nas opções uma url de retorno para o Bcash voltar ao site desejado.
+
+	Bcash::Payment.new(package, {:email_loja => 'test@test.com', :url_retorno => 'http://www.teste.com.br'})
+
+Você pode encontrar todas as opções no [site do bcash](https://www.bcash.com.br/desenvolvedores/integracao-loja-online.html) e procure por campos opcionais
+
+# Gerando formulário
+
+	payment.html
+
+Você terá o formulário pronto para envio, você também pode alterar o input do de envio para a maneira que desejar
+
+	payment.html{tag_content('button', 'Pagar!')}
+
+## Instalação
+
+Adicione ao seu Gemfile:
 
     gem 'bcash'
 
-And then execute:
+E execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install bcash
-
-## Usage
-
-TODO: Write usage instructions here
-
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. Fork 
+2. Cria seu branch (`git checkout -b my-new-feature`)
+3. Commit suas mudanças (`git commit -am 'Add some feature'`)
+4. Envie o branch (`git push origin my-new-feature`)
+5. Rode os testes
+6. Cria um novo Pull Request
