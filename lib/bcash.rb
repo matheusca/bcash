@@ -7,6 +7,7 @@ require "bcash/version"
 require "bcash/item"
 require "bcash/package"
 require "bcash/payment"
+require "bcash/notification"
 
 module Bcash
 	PAD = "PAD"
