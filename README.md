@@ -48,6 +48,15 @@ Você terá o formulário pronto para envio, você também pode alterar o input 
 
 	payment.html{tag_content('button', 'Pagar!')}
 
+# Retorno automático
+
+Se você utilizou a opção de url de retorno, você pode capturar o POST enviado pelo Bcash
+
+	notification = Bcash::Notification(params)
+	notification.id_transacao
+
+Você pode visualizar todos os parametros na [página de desenvolvimento do bcash](https://www.bcash.com.br/desenvolvedores/integracao-retorno-automatico-loja-online.html)
+
 ## Instalação
 
 Adicione ao seu Gemfile:
