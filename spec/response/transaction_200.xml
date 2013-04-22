@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transacao>
+	<id_transacao>18621609</id_transacao>
+	<data_transacao>21/04/2013</data_transacao>
+	<data_credito></data_credito>
+	<valor_original>0.01</valor_original>
+	<valor_loja>0.00</valor_loja>
+	<valor_total>0.00</valor_total>
+	<desconto_programado>0.00</desconto_programado>
+	<desconto>0.00</desconto>
+	<acrescimo>0.00</acrescimo>
+	<cod_meio_pagamento>0</cod_meio_pagamento>
+	<meio_pagamento>Não efetuado</meio_pagamento>
+	<parcelas>0</parcelas>
+	<cod_status>1</cod_status>
+	<status>Em andamento</status>
+	<data_alteracao_status>00/00/0000 00:00:00</data_alteracao_status>
+	<cliente_razao_social></cliente_razao_social>
+	<cliente_nome_fantasia></cliente_nome_fantasia>
+	<cliente_nome></cliente_nome>
+	<cliente_email>matheus@grupo-audax.com</cliente_email>
+	<cliente_rg></cliente_rg>
+	<cliente_data_emissao_rg></cliente_data_emissao_rg>
+	<cliente_orgao_emissor_rg></cliente_orgao_emissor_rg>
+	<cliente_estado_emissor_rg></cliente_estado_emissor_rg>
+	<cliente_cnpj></cliente_cnpj>
+	<cliente_cpf></cliente_cpf>
+	<cliente_sexo></cliente_sexo>
+	<cliente_data_nascimento></cliente_data_nascimento>
+	<cliente_telefone></cliente_telefone>
+	<cliente_endereco></cliente_endereco>
+	<cliente_complemento></cliente_complemento>
+	<cliente_bairro></cliente_bairro>
+	<cliente_cidade></cliente_cidade>
+	<cliente_estado></cliente_estado>
+	<cliente_cep></cliente_cep>
+	<frete>0.00</frete>
+	<tipo_frete></tipo_frete>
+	<id_pedido>R415728787</id_pedido>
+	<free></free>
+	<email_vendedor>matheuscaceres@gmail.com</email_vendedor>
+	<pedidos>
+		<item>
+			<codigo_produto>1070870205</codigo_produto>
+			<nome_produto>Ruby on Rails Bag</nome_produto>
+			<qtde>1</qtde>
+			<valor_total>0.01</valor_total>
+			<extra></extra>
+		</item>
+		<item>
+			<codigo_produto>1070870206</codigo_produto>
+			<nome_produto>Ruby on Rails Bag</nome_produto>
+			<qtde>3</qtde>
+			<valor_total>10.0</valor_total>
+			<extra></extra>
+		</item>
+	</pedidos>
+</transacao>
+
