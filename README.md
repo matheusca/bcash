@@ -55,7 +55,34 @@ Se você utilizou a opção de url de retorno, você pode capturar o POST enviad
 	notification = Bcash::Notification(params)
 	notification.id_transacao
 
-Você pode visualizar todos os parametros na [página de desenvolvimento do bcash](https://www.bcash.com.br/desenvolvedores/integracao-retorno-automatico-loja-online.html)
+Você pode visualizar todos os parametros na [página de desenvolvimento do bcash](https://www.bcash.com.br/desenvolvedores/integracao-retorno-automatico-loja-online.html).
+
+## Verificar transação
+
+Você pode visualizar as transações, consultado o status do seu pedido, para isso obtenha a chave de acesso
+
+	Logue em sua conta no site do bcash -> Ferramentas -> Sua chave acesso
+
+Com a chave de acesso podemos utilizar a classe transação de duas maneiras
+
+	transaction = Bcash::Transaction.new(email, token, id_transacao, id_pedido)
+	transaction.get
+
+Ou
+
+	transaction = Bcash::Transaction.new
+	transaction.email = 'teste@teste.com.br'
+	transaction.token = '1234567890'
+	transaction.id_transaction = '123'
+	transaction.id_order = '1234'
+	transaction.get
+
+Agora você tem todos os parametros para consulta
+
+	transaction.id_transacao
+	transaction.status
+
+Você pode ver todos HTTP code e parametros de retorno no [manual de transação](https://www.bcash.com.br/site/manual/Bcash_Manual_Integracao_Consultar_Dados_Transacao.pdf).
 
 ## Instalação
 
@@ -67,12 +94,7 @@ E execute:
 
     $ bundle
 
-## TODO
-
-* Criar classe para retorno automatico
-* Verificar status do pedido
-
-## Contributing
+## Contribuindo
 
 1. Fork 
 2. Cria seu branch (`git checkout -b my-new-feature`)
