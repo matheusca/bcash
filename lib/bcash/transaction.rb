@@ -15,7 +15,6 @@ module Bcash
 
     def get
       transaction = Nokogiri::XML(get_transaction_url)
-
       self.instance_variables.each{|variable| raise Bcash::Errors::EmptyAttributes.new if self.instance_variable_get(variable).nil?}
 
       create_transaction_attrs(transaction) 
@@ -47,6 +46,8 @@ module Bcash
           :price => item.css("valor_total").text
         })
       end
+
+      nil
     end
 
     def base64_bcash

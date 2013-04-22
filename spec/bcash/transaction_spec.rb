@@ -10,15 +10,20 @@ describe Bcash::Transaction do
       body = File.open(File.join(File.dirname(__FILE__), '..', 'response', 'transaction_200.xml')).read
       FakeWeb.register_uri(:post, %r|pagamentodigital\.com\.br|, :body => body, :content_type => 'text/xml')
       FakeWeb.allow_net_connect = false
-    end
 
-    it "should return attributes" do
       subject.email = 'teste@test.com'
       subject.token = '1234567890'
       subject.id_transaction = '18621609'
       subject.id_order = 'R415728787'
+    end
 
+    it "should nil in get" do
+      subject.get.should be_nil
+    end
+
+    it "should return attributes" do
       subject.get
+
       subject.id_transacao.should == '18621609'
       subject.id_pedido.should == 'R415728787'
       subject.valor_original.should == '0.01'
