@@ -1,19 +1,19 @@
 # Bcash
 
-Integração com Bcash(antigo Pagamento Digital)
+Integração com Bcash (antigo Pagamento Digital)
 
 ## Como usar
 
 # Criando um item
 
 	items = [] 
-	items << Bcash::Item.new({id: 1, description: 'teste', amount: 2, price: 30.0})
+	items << Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
 
 Você pode criar quando itens for necessários para enviar para o Bcash
 
 Você pode validar se o item criado é valido
 
-	item = Bcash::Item.new({id: 1, description: 'teste', amount: 2, price: 30.0})
+	item = Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
 	item.valid?
 
 Valide o item, igual ao Rails.
@@ -32,11 +32,11 @@ No pacote você pode alterar o valor do frete e o tipo de integração do Bcash
 
 Crie um pagamento
 
-	payment = Bcash::Payment.new(package, {:email_loja => 'test@test.com'}) 
+	payment = Bcash::Payment.new(package, email_loja: 'test@test.com') 
 
 Podemos colocar nas opções uma url de retorno para o Bcash voltar ao site desejado.
 
-	Bcash::Payment.new(package, {:email_loja => 'test@test.com', :url_retorno => 'http://www.teste.com.br'})
+	Bcash::Payment.new(package, email_loja: 'test@test.com', url_retorno: 'http://www.teste.com.br')
 
 Você pode encontrar todas as opções no [site do bcash](https://www.bcash.com.br/desenvolvedores/integracao-loja-online.html) e procure por campos opcionais
 

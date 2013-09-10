@@ -39,12 +39,10 @@ module Bcash
       end
 
       @items = transaction.xpath("//pedidos/item").map do |item|
-        Item.new({
-          :id => item.css("codigo_produto").text,
-          :description => item.css("nome_produto").text,
-          :amount => item.css("qtde").text,
-          :price => item.css("valor_total").text
-        })
+        Item.new(id:          item.css("codigo_produto").text,
+                 description: item.css("nome_produto").text,
+                 amount:      item.css("qtde").text,
+                 price:       item.css("valor_total").text)
       end
 
       nil
@@ -56,8 +54,8 @@ module Bcash
 
     def params
       {
-       :id_transacao => @id_transaction,
-       :id_pedido => @id_pedido,
+       id_transacao: @id_transaction,
+       id_pedido:    @id_pedido,
       }
     end
 

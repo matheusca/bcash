@@ -28,7 +28,7 @@ describe Bcash::Payment do
     end
 
     it "should has inputs" do
-      form_bcash = Nokogiri::HTML(subject.html) 
+      form_bcash = Nokogiri::HTML(subject.html)
       form_bcash.at('input[@name="email_loja"]')['value'].should == 'test@test.com'
       form_bcash.at('input[@name="url_retorno"]')['value'].should == 'http://www.test.com'
       form_bcash.at('input[@name="frete"]')['value'].should == '0'
