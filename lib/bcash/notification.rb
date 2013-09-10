@@ -2,7 +2,7 @@ module Bcash
   class Notification
     attr_accessor :params
 
-    def initialize(params) 
+    def initialize(params)
       @params = params
 
       create_bcash_attrs

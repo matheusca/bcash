@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Matheus Caceres"]
   spec.email         = ["matheuscaceres@gmail.com"]
   spec.description   = %q{Integration with BCash}
-  spec.summary		 = %q{Integration with BCash}
+  spec.summary       = %q{Integration with BCash}
   spec.homepage      = ""
   spec.license       = "MIT"
 

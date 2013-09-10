@@ -14,5 +14,5 @@ require "bcash/transaction"
 require "bcash/errors/empty_attributes.rb"
 
 module Bcash
-	PAD = "PAD"
+  PAD = "PAD"
 end

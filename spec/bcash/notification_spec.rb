@@ -19,5 +19,5 @@ describe Bcash::Notification do
     notification.data_credito.should == '22/04/2013'
     notification.valor_original.should == '12.00'
   end
-  
+
 end
