@@ -46,7 +46,7 @@ Você pode encontrar todas as opções no [site do bcash](https://www.bcash.com.
 
 Você terá o formulário pronto para envio, você também pode alterar o input do de envio para a maneira que desejar
 
-	payment.html{tag_content('button', 'Pagar!')}
+	payment.html { submit_tag('button', 'Pagar!') }
 
 # Retorno automático
 
