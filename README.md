@@ -22,11 +22,11 @@ Valide o item, igual ao Rails.
 
 Com os itens criados, crie um pacote para o envio
 
-	package = Package.create(items)
+	package = Bcash::Package.create(items)
 
 No pacote você pode alterar o valor do frete e o tipo de integração do Bcash
 	
-	Package.create(items, 30.0, BCASH::PAD)
+	Bcash::Package.create(items, 30.0, BCASH::PAD)
 
 # Gerando pagamento
 
