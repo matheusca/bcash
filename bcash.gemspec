@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activemodel"
   spec.add_dependency "rest-client"
-  spec.add_dependency "haml"
   spec.add_dependency "nokogiri"
   spec.add_dependency "actionpack"
 

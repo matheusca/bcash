@@ -11,19 +11,19 @@ module Bcash
     def initialize(package, options = {})
       @package = package
       @options = options
-      @email = @options[:email_loja]
+      @email   = @options[:email_loja]
     end
 
     def html
-      form_content = File.open(File.join(File.dirname(__FILE__), 'form_bcash.html.haml')).read
+      form_content = File.open(File.join(File.dirname(__FILE__), 'form_bcash.html.erb')).read
 
-      if block_given?
-        button_html = yield
+      button_html = if block_given?
+        yield
       else
-        button_html = content_tag('button', 'Pagar com Bcash!', type: "submit")
+        content_tag('button', 'Pagar com Bcash!', type: 'submit')
       end
 
-      Haml::Engine.new(form_content).render(nil, package: self.package, options: self.options, button_html: button_html)
+      ERB.new(form_content).result(binding)
     end
   end
 end
