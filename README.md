@@ -26,7 +26,7 @@ Com os itens criados, crie um pacote para o envio
 
 No pacote você pode alterar o valor do frete e o tipo de integração do Bcash
 	
-	Bcash::Package.create(items, 30.0, BCASH::PAD)
+	Bcash::Package.create(items, 30.0, Bcash::PAD)
 
 # Gerando pagamento
 
