@@ -6,7 +6,7 @@ Integração com Bcash (antigo Pagamento Digital)
 
 ### Criando e validando um item
 
-Você pode criar um item e, como no Rails, verificar se ele é valido:
+Você pode criar um item e, como no Rails, verificar se ele é válido:
 
 ``` ruby
 item = Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
