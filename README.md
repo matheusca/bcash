@@ -4,101 +4,136 @@ Integração com Bcash (antigo Pagamento Digital)
 
 ## Como usar
 
-# Criando um item
+### Criando e validando um item
 
-	items = [] 
-	items << Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
+Você pode criar um item e, como no Rails, verificar se ele é válido:
 
-Você pode criar quando itens for necessários para enviar para o Bcash
+``` ruby
+item = Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
+item.valid?
+```
 
-Você pode validar se o item criado é valido
+Você pode criar quantos itens forem necessários para enviar ao Bcash:
 
-	item = Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
-	item.valid?
+``` ruby
+items = []
+items << Bcash::Item.new(id: 1, description: 'teste', amount: 2, price: 30.0)
+```
 
-Valide o item, igual ao Rails.
+### Criando um pacote
 
-# Criando um pacote
+Com os itens criados, crie um pacote para o envio:
 
-Com os itens criados, crie um pacote para o envio
+``` ruby
+package = Bcash::Package.create(items)
+```
 
-	package = Bcash::Package.create(items)
+No pacote você pode alterar o valor do frete e o tipo de integração com o Bcash:
 
-No pacote você pode alterar o valor do frete e o tipo de integração do Bcash
-	
-	Bcash::Package.create(items, 30.0, Bcash::PAD)
+``` ruby
+Bcash::Package.create(items, 30.0, Bcash::PAD)
+```
 
-# Gerando pagamento
+### Gerando pagamento
 
-Crie um pagamento
+Crie um pagamento:
 
-	payment = Bcash::Payment.new(package, email_loja: 'test@test.com') 
+``` ruby
+payment = Bcash::Payment.new(package, email_loja: 'test@test.com')
+```
 
-Podemos colocar nas opções uma url de retorno para o Bcash voltar ao site desejado.
+Podemos colocar nas opções uma _url de retorno_ para a qual o Bcash irá
+redirecionar o usuário após finalizar o pagamento:
 
-	Bcash::Payment.new(package, email_loja: 'test@test.com', url_retorno: 'http://www.teste.com.br')
+``` ruby
+Bcash::Payment.new(package, email_loja: 'test@test.com', url_retorno: 'http://meu-site.com.br')
+```
 
-Você pode encontrar todas as opções no [site do bcash](https://www.bcash.com.br/desenvolvedores/integracao-loja-online.html) e procure por campos opcionais
+Você pode encontrar todas as opções na
+[página do Bcash para desenvolvedores](https://www.bcash.com.br/desenvolvedores/integracao-loja-online.html), buscando por "campos opcionais".
 
-# Gerando formulário
+### Gerando formulário
 
-	payment.html
+Tendo o objeto do pagamento, você pode gerar o formulário pronto para envio:
 
-Você terá o formulário pronto para envio, você também pode alterar o input do de envio para a maneira que desejar
+``` ruby
+payment.html
+```
 
-	payment.html { submit_tag('button', 'Pagar!') }
+Você também pode alterar o input de envio para a maneira que desejar:
 
-# Retorno automático
+``` ruby
+payment.html { submit_tag('button', 'Pagar!') }
+```
 
-Se você utilizou a opção de url de retorno, você pode capturar o POST enviado pelo Bcash
+### Retorno automático
 
-	notification = Bcash::Notification(params)
-	notification.id_transacao
+Se você utilizou a opção de _url de retorno_, você pode capturar o POST enviado
+pelo Bcash:
 
-Você pode visualizar todos os parametros na [página de desenvolvimento do bcash](https://www.bcash.com.br/desenvolvedores/integracao-retorno-automatico-loja-online.html).
+``` ruby
+notification = Bcash::Notification(params)
+notification.id_transacao
+```
 
-## Verificar transação
+Você pode visualizar todos os parâmetros na
+[página do Bcash para desenvolvedores](https://www.bcash.com.br/desenvolvedores/integracao-retorno-automatico-loja-online.html).
 
-Você pode visualizar as transações, consultado o status do seu pedido, para isso obtenha a chave de acesso
+### Verificar transação
 
-	Logue em sua conta no site do bcash -> Ferramentas -> Sua chave acesso
+Você pode visualizar as transações e consultar o status do seu pedido. Para isso
+obtenha a chave de acesso da seguinte maneira:
 
-Com a chave de acesso podemos utilizar a classe transação de duas maneiras
+```
+Logue em sua conta no site do Bcash -> Ferramentas -> Sua chave acesso
+```
 
-	transaction = Bcash::Transaction.new(email, token, id_transacao, id_pedido)
-	transaction.get
+Com a chave de acesso, podemos utilizar a classe transação de duas maneiras:
+
+``` ruby
+transaction = Bcash::Transaction.new(email, token, id_transacao, id_pedido)
+transaction.get
+```
 
 Ou
 
-	transaction = Bcash::Transaction.new
-	transaction.email = 'teste@teste.com.br'
-	transaction.token = '1234567890'
-	transaction.id_transaction = '123'
-	transaction.id_order = '1234'
-	transaction.get
+``` ruby
+transaction = Bcash::Transaction.new
+transaction.email = 'teste@teste.com.br'
+transaction.token = '1234567890'
+transaction.id_transaction = '123'
+transaction.id_order = '1234'
+transaction.get
+```
 
-Agora você tem todos os parametros para consulta
+Agora você tem todos os parâmetros para consulta:
 
-	transaction.id_transacao
-	transaction.status
+``` ruby
+transaction.id_transacao
+transaction.status
+```
 
-Você pode ver todos HTTP code e parametros de retorno no [manual de transação](https://www.bcash.com.br/site/manual/Bcash_Manual_Integracao_Consultar_Dados_Transacao.pdf).
+Você pode ver todos HTTP code e parâmetros de retorno no [manual de transação](https://www.bcash.com.br/site/manual/Bcash_Manual_Integracao_Consultar_Dados_Transacao.pdf).
 
 ## Instalação
 
 Adicione ao seu Gemfile:
 
-    gem 'bcash'
+``` ruby
+gem 'bcash'
+```
 
 E execute:
 
-    $ bundle
+``` shell
+$ bundle
+```
 
 ## Contribuindo
 
-1. Fork 
-2. Cria seu branch (`git checkout -b my-new-feature`)
+1. Fork
+2. Crie seu branch (`git checkout -b my-new-feature`)
 3. Commit suas mudanças (`git commit -am 'Add some feature'`)
 4. Envie o branch (`git push origin my-new-feature`)
 5. Rode os testes
-6. Cria um novo Pull Request
+6. Crie um novo Pull Request
