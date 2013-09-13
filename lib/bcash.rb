@@ -1,5 +1,4 @@
 require "active_model"
-require "haml"
 require "action_view"
 require "nokogiri"
 require "rest-client"
