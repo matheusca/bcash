@@ -1,5 +1,4 @@
 require "active_model"
-require "haml"
 require "action_view"
 require "nokogiri"
 require "rest-client"
@@ -14,5 +13,5 @@ require "bcash/transaction"
 require "bcash/errors/empty_attributes.rb"
 
 module Bcash
-	PAD = "PAD"
+  PAD = "PAD"
 end
