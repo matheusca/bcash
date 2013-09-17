@@ -5,4 +5,4 @@ gemspec
 
 gem 'rspec'
 gem 'guard-rspec'
-gem 'rb-fsevent' 
+gem 'rb-fsevent'

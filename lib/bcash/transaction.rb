@@ -4,7 +4,7 @@ module Bcash
   class Transaction
     attr_accessor :email, :token, :id_transaction, :id_order
     attr_reader :items
-    
+
     def initialize(email = nil, token = nil, id_transaction = nil, id_order = nil)
       @email = email
       @token = token
@@ -17,7 +17,7 @@ module Bcash
       transaction = Nokogiri::XML(get_transaction_url)
       self.instance_variables.each{|variable| raise Bcash::Errors::EmptyAttributes.new if self.instance_variable_get(variable).nil?}
 
-      create_transaction_attrs(transaction) 
+      create_transaction_attrs(transaction)
     end
 
     private
@@ -36,15 +36,13 @@ module Bcash
         self.class.class_eval do
            attr_reader node.name
         end
-      end        
+      end
 
       @items = transaction.xpath("//pedidos/item").map do |item|
-        Item.new({
-          :id => item.css("codigo_produto").text,
-          :description => item.css("nome_produto").text,
-          :amount => item.css("qtde").text,
-          :price => item.css("valor_total").text
-        })
+        Item.new(id:          item.css("codigo_produto").text,
+                 description: item.css("nome_produto").text,
+                 amount:      item.css("qtde").text,
+                 price:       item.css("valor_total").text)
       end
 
       nil
@@ -56,8 +54,8 @@ module Bcash
 
     def params
       {
-       :id_transacao => @id_transaction, 
-       :id_pedido => @id_pedido, 
+       id_transacao: @id_transaction,
+       id_pedido:    @id_pedido,
       }
     end
 

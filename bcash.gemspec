@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Matheus Caceres"]
   spec.email         = ["matheuscaceres@gmail.com"]
   spec.description   = %q{Integration with BCash}
-  spec.summary		 = %q{Integration with BCash}
+  spec.summary       = %q{Integration with BCash}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activemodel"
   spec.add_dependency "rest-client"
-  spec.add_dependency "haml"
   spec.add_dependency "nokogiri"
   spec.add_dependency "actionpack"
 
