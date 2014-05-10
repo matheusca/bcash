@@ -2,9 +2,6 @@ require 'spec_helper'
 require 'fakeweb'
 
 describe Bcash::Transaction do
-
-  subject{Bcash::Transaction.new}
-
   context "its ok" do
     before(:each) do
       body = File.open(File.join(File.dirname(__FILE__), '..', 'response', 'transaction_200.xml')).read
@@ -43,5 +40,4 @@ describe Bcash::Transaction do
       expect {subject.get}.to raise_error(Bcash::Errors::EmptyAttributes)
     end
   end
-
 end
