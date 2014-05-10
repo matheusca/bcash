@@ -15,8 +15,7 @@ module Bcash
 
     def get
       transaction = Nokogiri::XML(get_transaction_url)
-      self.instance_variables.each{|variable| raise Bcash::Errors::EmptyAttributes.new if self.instance_variable_get(variable).nil?}
-
+      %w(@email @token).each{ |variable| raise Bcash::Errors::EmptyAttributes.new if instance_variable_get(variable).nil? }
       create_transaction_attrs(transaction)
     end
 
@@ -53,10 +52,7 @@ module Bcash
     end
 
     def params
-      {
-       id_transacao: @id_transaction,
-       id_pedido:    @id_order,
-      }
+      { id_transacao: @id_transaction, id_pedido: @id_order }.delete_if { |key, value| value.nil? }
     end
 
     def headers

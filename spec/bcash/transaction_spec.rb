@@ -2,12 +2,22 @@ require 'spec_helper'
 require 'fakeweb'
 
 describe Bcash::Transaction do
-  it "should include the order id if specified" do
-    RestClient.should_receive(:post) do |url, params, headers|
-      params[:id_pedido].should == "123"
-      ""
+  describe "#get" do
+    it "should include the order id if specified" do
+      RestClient.should_receive(:post) do |url, params, headers|
+        params[:id_pedido].should == "123"
+        ""
+      end
+      Bcash::Transaction.new('teste@test.com', '1234567890', '18621609', "123").get
     end
-    Bcash::Transaction.new('teste@test.com', '1234567890', '18621609', "123").get
+
+    it "should not include the transaction id if not specified" do
+      RestClient.should_receive(:post) do |url, params, headers|
+        params.has_key?(:id_transacao).should be_false
+        ""
+      end
+      Bcash::Transaction.new('teste@test.com', '1234567890', nil, "123").get
+    end
   end
 
   context "its ok" do
