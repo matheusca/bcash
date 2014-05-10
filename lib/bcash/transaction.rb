@@ -44,7 +44,7 @@ module Bcash
                  price:       item.css("valor_total").text)
       end
 
-      nil
+      self
     end
 
     def base64_bcash

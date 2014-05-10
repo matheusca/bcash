@@ -32,8 +32,8 @@ describe Bcash::Transaction do
       subject.id_order = 'R415728787'
     end
 
-    it "should nil in get" do
-      subject.get.should be_nil
+    it "should return self in get" do
+      subject.get.should == subject
     end
 
     it "should return attributes" do
