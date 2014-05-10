@@ -2,6 +2,14 @@ require 'spec_helper'
 require 'fakeweb'
 
 describe Bcash::Transaction do
+  it "should include the order id if specified" do
+    RestClient.should_receive(:post) do |url, params, headers|
+      params[:id_pedido].should == "123"
+      ""
+    end
+    Bcash::Transaction.new('teste@test.com', '1234567890', '18621609', "123").get
+  end
+
   context "its ok" do
     before(:each) do
       body = File.open(File.join(File.dirname(__FILE__), '..', 'response', 'transaction_200.xml')).read

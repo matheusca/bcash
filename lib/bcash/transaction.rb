@@ -55,7 +55,7 @@ module Bcash
     def params
       {
        id_transacao: @id_transaction,
-       id_pedido:    @id_pedido,
+       id_pedido:    @id_order,
       }
     end
 
