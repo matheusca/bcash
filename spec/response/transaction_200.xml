@@ -18,7 +18,7 @@
   <cliente_razao_social></cliente_razao_social>
   <cliente_nome_fantasia></cliente_nome_fantasia>
   <cliente_nome></cliente_nome>
-  <cliente_email>matheus@grupo-audax.com</cliente_email>
+  <cliente_email>test@test.com</cliente_email>
   <cliente_rg></cliente_rg>
   <cliente_data_emissao_rg></cliente_data_emissao_rg>
   <cliente_orgao_emissor_rg></cliente_orgao_emissor_rg>
@@ -38,7 +38,7 @@
   <tipo_frete></tipo_frete>
   <id_pedido>R415728787</id_pedido>
   <free></free>
-  <email_vendedor>matheuscaceres@gmail.com</email_vendedor>
+  <email_vendedor>test@other.com</email_vendedor>
   <pedidos>
     <item>
       <codigo_produto>1070870205</codigo_produto>
