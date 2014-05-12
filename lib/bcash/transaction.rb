@@ -6,15 +6,16 @@ module Bcash
     attr_reader :items
 
     def initialize(email = nil, token = nil, id_transaction = nil, id_order = nil)
-      @email = email
-      @token = token
+      @email          = email
+      @token          = token
       @id_transaction = id_transaction
-      @id_order = id_order
+      @id_order       = id_order
     end
 
 
     def get
       transaction = Nokogiri::XML(get_transaction_url)
+
       %w(@email @token).each{ |variable| raise Bcash::Errors::EmptyAttributes.new if instance_variable_get(variable).nil? }
       create_transaction_attrs(transaction)
     end
