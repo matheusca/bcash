@@ -1,21 +1,25 @@
 require 'spec_helper'
 
-valid_attributes = {
-  id: 1,
-  description: "Description a item.",
-  amount: 2,
-  price: 200.00,
-}
-
 describe Bcash::Item do
-
-  it "should be a valid item" do
-    Bcash::Item.new(valid_attributes).should be_valid
+  let(:valid_attributes) do
+    {
+      id: 1,
+      description: "Description a item." * 100,
+      amount: 2,
+      price: 200.00,
+    }
   end
 
-  it "should be return description with at 255 caracters" do
-    item = Bcash::Item.new(valid_attributes.merge(valid_attributes.merge(description: 'A' * 300)))
-    item.description.size.should == 255
+  context 'when valid' do
+    subject{ Bcash::Item.new(valid_attributes) }
+
+    it 'object returns accpet to resquests' do
+      expect(subject).to be_valid
+    end
+
+    it "returns description with at 255 caracters" do
+      expect(subject.description.size).to eq(255)
+    end
   end
 
 end
